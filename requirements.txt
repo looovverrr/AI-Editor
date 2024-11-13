@@ -1,0 +1,7 @@
+opencv-python
+numpy
+Pillow
+python-telegram-bot==20.3
+rembg
+deoldify
+Real-ESRGAN
