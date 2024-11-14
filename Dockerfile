@@ -3,32 +3,32 @@ FROM python:3.9-slim
 
 # Устанавливаем системные зависимости
 RUN apt-get update && apt-get install -y \
-    ffmpeg \
-    libgl1-mesa-glx \
-    libglib2.0-0 \
-    libsm6 \
-    libxext6 \
-    wget \
-    git && \
+    ffmpeg libgl1 libglib2.0-0 wget && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Устанавливаем PyTorch (CPU-версия)
+# Устанавливаем gdown для работы с Google Drive
+RUN pip install --no-cache-dir gdown
+
+# Устанавливаем PyTorch
 RUN pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
 
-# Копируем requirements.txt и устанавливаем зависимости
-COPY requirements.txt /app/requirements.txt
-WORKDIR /app
+# Устанавливаем остальные библиотеки
+COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Загрузка весов для RealESRGAN
-RUN mkdir -p /app/weights && \
-    wget -O /app/weights/RealESRGAN_x4.pth https://github.com/xinntao/Real-ESRGAN/releases/download/v0.3.0/RealESRGAN_x4plus.pth
+# Создаем папку для весов и скачиваем их
+RUN mkdir -p /app/weights
 
-# Копируем код приложения
-COPY . /app
+# Скачать веса из Google Drive
+RUN gdown --id 1Gy09UPByypbKz9xfHU_iPvMc34yGEFwJ -O /app/weights/RealESRGAN_x4.pth \
+    && gdown --id 1Z_D0kAytAP7QAaar5k9FLH7ZDE1cuVt4 -O /app/weights/other_weights_1.pth \
+    && gdown --id 1qmXEyXyiJU07jhJm_3e-lT2hOYg0_QNx -O /app/weights/other_weights_2.pth \
+    && gdown --id 107AHBtMafUZFCr-tZVTob-JrMHUi_On_ -O /app/weights/other_weights_3.pth \
+    && gdown --id 1qtwplC96TwpYqKPl-wNxWnqeW0Tn-6kQ -O /app/weights/other_weights_4.pth
 
-# Устанавливаем рабочую директорию
-WORKDIR /app
+# Копируем код бота в контейнер
+COPY . /main
+WORKDIR /main
 
-# Запуск приложения
+# Запускаем бота
 CMD ["python", "bot.py"]
