@@ -1,5 +1,5 @@
-# Используем базовый образ Python
-FROM python:3.9-slim
+# Используем базовый образ Python 3.10
+FROM python:3.10-slim
 
 # Устанавливаем системные зависимости
 RUN apt-get update && apt-get install -y \
@@ -12,8 +12,10 @@ RUN pip install --no-cache-dir gdown
 # Устанавливаем PyTorch
 RUN pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
 
-# Устанавливаем остальные библиотеки
+# Копируем файл requirements.txt
 COPY requirements.txt .
+
+# Устанавливаем зависимости
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Создаем папку для весов и скачиваем их
