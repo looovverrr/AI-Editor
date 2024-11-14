@@ -22,8 +22,8 @@
 
 ---
 
-## Установка и запуск  
+## Установите веса модели  
 
-1. **Клонируйте репозиторий**:  
+1. **Ссылка**:  
    ```bash
-   git clone https://github.com/ваш_аккаунт/ваш_проект.git
+https://drive.google.com/drive/folders/13KcTX-ZAKfYDH2mQu9dmUfChY34bk8Wy?dmr=1&ec=wgc-drive-hero-goto
