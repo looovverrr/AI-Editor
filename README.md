@@ -25,5 +25,4 @@
 ## Установите веса модели  
 
 1. **Ссылка**:  
-   ```bash
 https://drive.google.com/drive/folders/13KcTX-ZAKfYDH2mQu9dmUfChY34bk8Wy?dmr=1&ec=wgc-drive-hero-goto
