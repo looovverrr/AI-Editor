@@ -1,18 +1,18 @@
-# Основные библиотеки для работы с Telegram
+# Для работы с Telegram
 python-telegram-bot==20.3
-# Библиотека для удаления фона
+# Для удаления фона
 rembg==2.0.32
 # Для работы с изображениями
 Pillow
 opencv-python
 # Для улучшения качества изображений
 Real-ESRGAN
-# Библиотеки для старинных изображений
+# Библиотеки для работы с ML
 torch==1.10.0
 torchvision==0.11.1
 torchaudio==0.10.0
-# Устанавливаем зависимости для DeOldify
+# Для DeOldify
 fastai==2.5.3
-# Для загрузки весов DeOldify и Real-ESRGAN
+# Если необходимо клонировать репозитории для DeOldify и Real-ESRGAN
 git+https://github.com/jantic/DeOldify.git
 git+https://github.com/xinntao/Real-ESRGAN.git
