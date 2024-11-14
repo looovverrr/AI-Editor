@@ -1,7 +1,7 @@
-opencv-python
-numpy
-Pillow
+opencv-python==4.8.0.74
+numpy==1.24.4
+Pillow==10.0.0
 python-telegram-bot==20.3
-rembg
-deoldify
-Real-ESRGAN
+rembg==2.0.32
+deoldify==0.0.13
+RealESRGAN==1.3.5
